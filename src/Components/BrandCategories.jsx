@@ -1,44 +1,45 @@
+
+
+
 import queryString from "query-string";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function BrandCategories() {
-    const navigate=useNavigate();
-    const [data, setData] = useState('')
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => setData(data.brand);
-
-    // console.log(data)
-
-
+    const navigate = useNavigate();
+    const [selectedBrand, setSelectedBrand] = useState("");
+   
     useEffect(() => {
-        if (data) {
-            const url = queryString.stringifyUrl({ url: '/', query: { brand: data } });
+        if (selectedBrand && selectedBrand !== "") {
+            const url = queryString.stringifyUrl({ url: "/", query: { brand: selectedBrand } });
             navigate(url);
         }
-    }, [data, navigate]); // Dependency array with data and navigate
-    // let currentQuery = { brand: data };
-    // const url = queryString.stringifyUrl({
-    //   url: '/',
-    //   query: currentQuery
-    // })
+    }, [selectedBrand, navigate]);
 
-
-    
-    
-
-
-
-
+    const handleBrandChange = (event) => {
+        setSelectedBrand(event.target.value);
+    };
     return (
         <div>
-            <form onChange={handleSubmit(onSubmit)}>
-
-                <select {...register("brand")} className="select select-bordered select-sm w-1/2 text-center">
-                    <option disabled selected><p><FaStar /></p>
-                    Select Brand Name</option> 
+            <form>
+                <div className="label">
+                    <span className="label-text">Select Brand</span>
+                    
+                </div>
+                <select
+                    // {...register("brand")}
+                    className="select select-bordered select-sm  text-center"
+                    onChange={handleBrandChange}
+                    defaultValue=""
+                >
+                    <option disabled value="">
+                        <p>
+                            <FaStar />
+                        </p>
+                        Select Brand Name
+                    </option>
                     <option value="null">All</option>
                     <option value="iPhone">iPhone</option>
                     <option value="Galaxy">Samsung</option>
@@ -47,8 +48,7 @@ export default function BrandCategories() {
                     <option value="Pixel">Google Pixel</option>
                     <option value="ASUS">ASUS</option>
                 </select>
-
             </form>
         </div>
-    )
+    );
 }

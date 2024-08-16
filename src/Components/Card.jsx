@@ -7,8 +7,8 @@ export default function Card({ phone }) {
     return (
         <div>
 
-            <div  className='col-span-1 cursor-pointer group bg-white'>
-                <div className='flex flex-col gap-2 w-full'>
+            <div  className='col-span-1 cursor-pointer group bg-white border-2 border-red-200 rounded-xl'>
+                <div className='flex flex-col gap-2 w-full pb-5'>
                     <div
                         className='
               aspect-square 
@@ -40,6 +40,7 @@ export default function Card({ phone }) {
                         ></div>
                     </div>
                     <div className='font-semibold text-lg'>{phone?.productname}</div>
+                    <div className='font-semibold text-base'>{phone?.category} Phone</div>
                     <div className='font-light text-neutral-500 '>
                         <ReactStarsRating className="flex justify-center" value={phone?.Ratings} />;
                     </div>
