@@ -3,11 +3,12 @@ import ReactStarsRating from 'react-awesome-stars-rating';
 import { FaCartPlus } from 'react-icons/fa';
 
 export default function Card({ phone }) {
-    // console.log(phone)
+
+
     return (
         <div>
 
-            <div  className='col-span-1 cursor-pointer group bg-white border-2 border-red-200 rounded-xl'>
+            <div className='col-span-1 cursor-pointer group bg-white border-2 border-red-200 rounded-xl'>
                 <div className='flex flex-col gap-2 w-full pb-5'>
                     <div
                         className='
@@ -33,6 +34,7 @@ export default function Card({ phone }) {
                         />
                         <div
                             className='
+                           
               absolute
               top-3
               right-3

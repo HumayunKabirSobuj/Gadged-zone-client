@@ -4,31 +4,80 @@ import { axiosCommon } from "../Hooks/useAxiosCommon";
 import Heading from "./Heading";
 import Card from "./Card";
 import { useSearchParams } from "react-router-dom";
+import Pagination from "./Pagination";
+import { useState } from "react";
 
 export default function Phones() {
-    let [params] = useSearchParams();
-    const brand = params.get("brand") || ""; 
-    const category = params.get("category") || ""; 
 
-    const { data: phones = [], isLoading } = useQuery({
-        queryKey: ["phones", brand, category], 
+    // pagination
+    const [currentPage, setCurrentPage] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(9);
+    const pages = []
+
+
+
+
+
+
+    let [params] = useSearchParams();
+    const brand = params.get("brand") || "";
+    const category = params.get("category") || "";
+    const productname = params.get("productname") || "";
+
+    
+    const { data, isLoading } = useQuery({
+        queryKey: ["phones", brand, category, currentPage, itemsPerPage],
         queryFn: async () => {
- 
-            const { data } = await axiosCommon.get(`/phones?brand=${brand}&category=${category}`);
+
+            const { data } = await axiosCommon.get(`/phones?brand=${brand}&category=${category}&productname=${productname}&page=${currentPage}&size=${itemsPerPage}`);
             return data;
         },
-        enabled: true, 
+        enabled: true,
     });
+
+
+
+    // pagination
+    const { phones = [], count = 0 } = data || {};
+
+    const numberOfPages = Math.ceil(count / itemsPerPage);
+    for (let i = 0; i < numberOfPages; i++) {
+        pages.push(i)
+    }
+
+    const handleItemPerPage = (e) => {
+        setItemsPerPage(parseInt(e.target.value));
+        setCurrentPage(0);
+    }
+
+    const handlePrevious = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
+    const handleNext = () => {
+        if (currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1)
+        }
+    }
 
     return (
         <div className="pt-4 text-center h-3/4">
             <div>
                 {phones && phones.length > 0 ? (
-                    <div className="pt-12 h-[400px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-14 px-5 gap-8">
-                        {phones.map((phone) => (
-                            <Card key={phone._id} phone={phone} />
-                        ))}
+                    <div className="">
+                        <div className="pt-12  grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-14 px-5 gap-8">
+                            {phones.map((phone) => (
+                                <Card key={phone._id} phone={phone} />
+                            ))}
+                            {/* pagination */}
+
+                        </div>
+                        <Pagination handlePrevious={handlePrevious} pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} handleItemPerPage={handleItemPerPage} itemsPerPage={itemsPerPage} handleNext={handleNext}></Pagination>
                     </div>
+
+
+
                 ) : (
                     <div className="flex items-center justify-center min-h-[calc(100vh-300px)]">
                         <Heading
@@ -37,8 +86,11 @@ export default function Phones() {
                             subtitle="Please Select Other Categories."
                         />
                     </div>
+
                 )}
+
             </div>
+
         </div>
     );
 }

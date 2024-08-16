@@ -19,11 +19,13 @@ export default function Home() {
 
       </div>
 
-      
+
       <SearchPhone/>
 
 
       <Phones />
+
+       
 
 
 
