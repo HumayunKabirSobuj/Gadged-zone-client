@@ -14,6 +14,7 @@ import {
 import AuthProvider from './Providers/AuthProvider';
 import SignUp from './Pages/SignUp';
 import Login from './Pages/Login';
+import Aos from 'aos';
 const queryClient = new QueryClient()
 
 
@@ -26,6 +27,8 @@ const router = createBrowserRouter([
   { path: '/signup', element: <SignUp /> },
 ]);
 
+
+Aos.init();
 createRoot(document.getElementById('root')).render(
   <StrictMode>
 

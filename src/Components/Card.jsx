@@ -8,7 +8,7 @@ export default function Card({ phone }) {
     return (
         <div>
 
-            <div className='col-span-1 cursor-pointer group bg-white border-2 border-[#55f4d9] rounded-xl'>
+            <div data-aos="zoom-in" data-aos-duration="1000" className='col-span-1 cursor-pointer group bg-white border-2 border-[#578de1] rounded-xl'>
                 <div className='flex flex-col gap-2 w-full pb-5'>
                     <div
                         className='
