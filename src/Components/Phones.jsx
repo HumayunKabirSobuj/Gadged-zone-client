@@ -68,7 +68,7 @@ export default function Phones({ productname, sort, DateSort ,minPrice,  maxPric
             <div>
                 {phones && phones.length > 0 ? (
                     <div className="">
-                        <div className="pt-12  grid  grid-cols-2 lg:grid-cols-3 lg:px-14 px-5 gap-8">
+                        <div className="pt-12  grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:px-14 px-5 gap-8">
                             {phones.map((phone) => (
                                 <Card key={phone._id} phone={phone} />
                             ))}
@@ -96,6 +96,9 @@ export default function Phones({ productname, sort, DateSort ,minPrice,  maxPric
         </div>
     );
 }
+
+
+
 Phones.propTypes = {
     productname: PropTypes.any,
     sort: PropTypes.any,

@@ -12,13 +12,18 @@ const Pagination = ({ handlePrevious,pages,currentPage,setCurrentPage,handleItem
                 </button>
 
 
-                {
-                    pages.map((page, index) => <button
-                        className={currentPage === page && 'selected inline-flex items-center px-4 py-2 text-sm font-semibold border'}
-                        onClick={() => setCurrentPage(page)}
-                        key={index}
-                    >{page}</button>)
-                }
+                <div className={`${'hidden lg:block'}`}>
+                    {
+                        pages.map((page, index) => <button
+                            className={currentPage === page && 'selected inline-flex items-center px-4 py-2 text-sm font-semibold border'}
+                            onClick={() => setCurrentPage(page)}
+                            key={index}
+                        >{page}</button>)
+                    }
+                </div>
+
+
+                
 
                 <select className="px-2 py-2  text-black capitalize border-primary border-2 rounded-md" onChange={handleItemPerPage} value={itemsPerPage}>
                     <option value="5">5</option>

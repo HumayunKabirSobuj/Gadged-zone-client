@@ -42,7 +42,7 @@ export default function BrandCategories() {
                     </option>
                     <option value="null">All</option>
                     <option value="iPhone">iPhone</option>
-                    <option value="Galaxy">Samsung</option>
+                    <option value="Galaxy">Galaxy</option>
                     <option value="Xiaomi">Xiaomi</option>
                     <option value="OnePlus">OnePlus</option>
                     <option value="Pixel">Google Pixel</option>
