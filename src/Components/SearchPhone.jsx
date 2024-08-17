@@ -2,18 +2,7 @@
 import PropTypes from 'prop-types'
 export default function SearchPhone({setName}) {
 
-    // console.log(name)
-    // useEffect(() => {
-    //     if (name && name !== "") {
-    //         const url = queryString.stringifyUrl({ url: "/", query: { productname: name } });
-    //         navigate(url);
-
-    //     }
-    // }, [name, navigate]);
-
-
-
-
+  
     const handleSearch = (e) => {
         const data = e.target.value;
         setName(data)
@@ -31,7 +20,7 @@ export default function SearchPhone({setName}) {
                 onChange={handleSearch}
                 type="text"
                 placeholder="Type here"
-                className="input input-bordered input-accent w-full input-sm" />
+                className="input input-bordered border border-[#578de1] w-full input-sm" />
         </div>
     )
 

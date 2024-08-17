@@ -18,7 +18,7 @@ export default function SortByDate({ setDateSort, DateSort }) {
           value={DateSort}
           name='sort'
           id='sort'
-          className="select select-accent select-sm text-center w-full"
+          className="select border border-[#578de1] select-sm text-center w-full"
         // className='border p-4 rounded-md'
         >
           <option value=""  selected>Sort by Date</option>

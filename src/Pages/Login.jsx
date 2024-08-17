@@ -5,8 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { TbFidgetSpinner } from "react-icons/tb";
 
 export default function Login() {
+
     const navigate = useNavigate();
-    const { signInWithGoogle, signIn, loading, setLoading } = useAuth();
+    const { signInWithGoogle, signIn,loading,setLoading } = useAuth();
     const handleSubmit = async e => {
         e.preventDefault();
         const form = e.target;
@@ -53,6 +54,7 @@ export default function Login() {
         }
 
     }
+
     return (
         <div>
             <div className='flex justify-center items-center min-h-screen'>

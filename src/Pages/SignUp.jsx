@@ -8,7 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 
 export default function SignUp() {
     const navigate = useNavigate();
-  const { createUser, signInWithGoogle, updateUserProfile, loading, setLoading } = useAuth();
+  const { createUser, signInWithGoogle, updateUserProfile, loading, setLoading} = useAuth();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -26,7 +26,7 @@ export default function SignUp() {
       
       const { data } = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`, formData)
 
-      console.log(data.data.display_url);
+    //   console.log(data.data.display_url);
 
       // 2. Registration
 
@@ -67,6 +67,8 @@ export default function SignUp() {
     }
 
   }
+
+  
 
     return (
         <div>
