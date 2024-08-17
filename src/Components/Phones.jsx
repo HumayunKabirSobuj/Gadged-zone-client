@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types'
 import { useQuery } from "@tanstack/react-query";
 import { axiosCommon } from "../Hooks/useAxiosCommon";
 import Heading from "./Heading";
@@ -7,7 +7,9 @@ import { useSearchParams } from "react-router-dom";
 import Pagination from "./Pagination";
 import { useState } from "react";
 
-export default function Phones() {
+export default function Phones({ productname, sort, DateSort ,minPrice,  maxPrice}) {
+
+    console.log(productname)
 
     // pagination
     const [currentPage, setCurrentPage] = useState(0);
@@ -22,14 +24,14 @@ export default function Phones() {
     let [params] = useSearchParams();
     const brand = params.get("brand") || "";
     const category = params.get("category") || "";
-    const productname = params.get("productname") || "";
+    // const productname = params.get("productname") || "";
 
-    
+
     const { data, isLoading } = useQuery({
-        queryKey: ["phones", brand, category, currentPage, itemsPerPage],
+        queryKey: ["phones", brand, category, currentPage, itemsPerPage, productname, sort,DateSort],
         queryFn: async () => {
 
-            const { data } = await axiosCommon.get(`/phones?brand=${brand}&category=${category}&productname=${productname}&page=${currentPage}&size=${itemsPerPage}`);
+            const { data } = await axiosCommon.get(`/phones?brand=${brand}&category=${category}&productname=${productname}&page=${currentPage}&size=${itemsPerPage}&sort=${sort}&DateSort=${DateSort}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
             return data;
         },
         enabled: true,
@@ -62,11 +64,11 @@ export default function Phones() {
     }
 
     return (
-        <div className="pt-4 text-center h-3/4">
+        <div className=" text-center h-3/4">
             <div>
                 {phones && phones.length > 0 ? (
                     <div className="">
-                        <div className="pt-12  grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-14 px-5 gap-8">
+                        <div className="pt-12  grid  grid-cols-2 lg:grid-cols-3 lg:px-14 px-5 gap-8">
                             {phones.map((phone) => (
                                 <Card key={phone._id} phone={phone} />
                             ))}
@@ -93,4 +95,13 @@ export default function Phones() {
 
         </div>
     );
+}
+Phones.propTypes = {
+    productname: PropTypes.object,
+    sort: PropTypes.object,
+    sormaxPricet: PropTypes.object,
+    minPrice: PropTypes.object,
+    DateSort: PropTypes.object,
+    maxPrice
+    : PropTypes.object,
 }

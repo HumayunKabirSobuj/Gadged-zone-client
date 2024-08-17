@@ -8,7 +8,7 @@ export default function Card({ phone }) {
     return (
         <div>
 
-            <div className='col-span-1 cursor-pointer group bg-white border-2 border-red-200 rounded-xl'>
+            <div className='col-span-1 cursor-pointer group bg-white border-2 border-[#55f4d9] rounded-xl'>
                 <div className='flex flex-col gap-2 w-full pb-5'>
                     <div
                         className='
@@ -48,6 +48,8 @@ export default function Card({ phone }) {
                     </div>
                     <div className='flex flex-row items-center justify-center gap-4'>
                         <div className='font-semibold'>$ {phone?.price}</div>
+                        <div className='font-semibold'>$ {new Date(phone?.creationdate).toLocaleDateString()}</div>
+
                         <div className='font-light text-2xl'><FaCartPlus />
                         </div>
                     </div>

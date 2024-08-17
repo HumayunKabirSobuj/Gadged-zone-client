@@ -23,14 +23,14 @@ export default function BrandCategories() {
     };
     return (
         <div>
-            <form>
+            <form className="w-full">
                 <div className="label">
                     <span className="label-text">Select Brand</span>
                     
                 </div>
                 <select
                     // {...register("brand")}
-                    className="select select-bordered select-sm  text-center"
+                    className="select select-accent select-sm text-center w-full"
                     onChange={handleBrandChange}
                     defaultValue=""
                 >

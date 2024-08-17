@@ -84,11 +84,12 @@ export default function SeriesCategories() {
 
     return (
         <div>
-            <div className="label">
+            <div className="label w-full">
                 <span className="label-text">Select Category</span>
             </div>
             <select
-                className="select select-bordered select-sm  text-center"
+            
+                className="select select-accent select-sm text-center w-full"
                 onChange={handleCategoryChange}
                 value={selectedCategory}
             >
