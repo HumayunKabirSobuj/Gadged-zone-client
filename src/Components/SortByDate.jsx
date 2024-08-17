@@ -21,7 +21,7 @@ export default function SortByDate({ setDateSort, DateSort }) {
           className="select select-accent select-sm text-center w-full"
         // className='border p-4 rounded-md'
         >
-          <option value="" disabled selected>Sort by Date</option>
+          <option value=""  selected>Sort by Date</option>
           <option value="newest"> Newest first</option>
           <option value="oldest"> Oldest first</option>
         </select>
@@ -30,7 +30,7 @@ export default function SortByDate({ setDateSort, DateSort }) {
   )
 }
 SortByDate.propTypes = {
-  setDateSort: PropTypes.object,
-  DateSort: PropTypes.object,
+  setDateSort: PropTypes.any,
+  DateSort: PropTypes.any,
 
 }

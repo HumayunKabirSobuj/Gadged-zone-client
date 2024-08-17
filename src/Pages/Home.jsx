@@ -1,51 +1,3 @@
-// import { useState } from "react";
-// import BrandCategories from "../Components/BrandCategories";
-// import Navbar from "../Components/Navbar";
-// import Phones from "../Components/Phones";
-// import SearchPhone from "../Components/SearchPhone";
-// import SeriesCategories from "../Components/SeriesCategories";
-// import LowToHighOrHighToLow from "../Components/LowToHighOrHighToLow";
-// import SortByDate from "../Components/SortByDate";
-// import PriceRange from "../Components/PriceRange";
-
-// export default function Home() {
-//   const [name, setName] = useState('');
-//    // sort
-//    const [sort, setSort] = useState('')
-//     // DateSort
-//   const [DateSort, setDateSort] = useState('')
-//   // Price Range
-//   const [minPrice, setMinPrice] = useState(0);
-//   const [maxPrice, setMaxPrice] = useState(1000);
-
-//   return (
-//     <div>
-//       <Navbar />
-
-//       <div className="relative  flex lg:flex-row flex-col pt-10 items-start">
-
-//         <div className="space-y-8  lg:w-1/4 w-full">
-//           <BrandCategories />
-//           <SeriesCategories />
-
-//           <SearchPhone setName={setName}></SearchPhone>
-//           <LowToHighOrHighToLow sort={sort} setSort={setSort}></LowToHighOrHighToLow>
-//           <SortByDate DateSort={DateSort} setDateSort={setDateSort}></SortByDate>
-//           <PriceRange minPrice={minPrice} setMinPrice={setMinPrice} maxPrice={maxPrice} setMaxPrice={setMaxPrice}></PriceRange>
-//         </div>
-//         <div className="flex-1">
-//           <Phones DateSort={DateSort} sort={sort}  productname={name}   minPrice={minPrice} setMinPrice={setMinPrice} maxPrice={maxPrice} setMaxPrice={setMaxPrice} > </Phones>
-//         </div>
-
-//       </div>
-
-//     </div>
-//   )
-// }
-
-
-
-
 
 import BrandCategories from "../Components/BrandCategories";
 import Phones from "../Components/Phones";
@@ -53,16 +5,21 @@ import SearchPhone from "../Components/SearchPhone";
 import SeriesCategories from "../Components/SeriesCategories";
 import LowToHighOrHighToLow from "../Components/LowToHighOrHighToLow";
 import SortByDate from "../Components/SortByDate";
-import PriceRange from "../Components/PriceRange";
+// import PriceRange from "../Components/PriceRange";
 import { useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import useAuth from "../Hooks/useAuth";
+import { FaUser } from "react-icons/fa";
 
 
 export default function Home() {
+
+  const { user, logOut } = useAuth();
+  // console.log(user)
   const [isActive, setActive] = useState(false)
 
   // Sidebar Responsive Handler
@@ -157,6 +114,21 @@ export default function Home() {
 
               {/*  Menu Items */}
               <nav className="space-y-3">
+                <div>
+                  {
+                    !user && <Link
+                      className="flex items-center justify-center text-2xl gap-2"
+                      to='/login'
+
+
+                    >
+                      <FaUser />
+
+
+                      <span className=' font-medium'>Login</span>
+                    </Link>
+                  }
+                </div>
 
                 <BrandCategories />
                 <SeriesCategories />
@@ -173,25 +145,32 @@ export default function Home() {
           <div>
             <hr />
 
-            {/* Profile Menu */}
-            <NavLink
-              to='/dashboard/profile'
-              className={({ isActive }) =>
-                `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                }`
+            <div>
+              {
+                user && <div>
+                  {/* Profile Menu */}
+                  <NavLink
+                    to='/dashboard/profile'
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                      }`
+                    }
+                  >
+                    <FcSettings className='w-5 h-5' />
+
+                    <span className='mx-4 font-medium'>Profile</span>
+                  </NavLink>
+                  <button
+                    onClick={() => logOut()}
+                    className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+                  >
+                    <GrLogout className='w-5 h-5' />
+
+                    <span className='mx-4 font-medium'>Logout</span>
+                  </button>
+                </div>
               }
-            >
-              <FcSettings className='w-5 h-5' />
-
-              <span className='mx-4 font-medium'>Profile</span>
-            </NavLink>
-            <button
-              className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
-            >
-              <GrLogout className='w-5 h-5' />
-
-              <span className='mx-4 font-medium'>Logout</span>
-            </button>
+            </div>
           </div>
         </div>
       </div>

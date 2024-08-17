@@ -37,5 +37,5 @@ export default function SearchPhone({setName}) {
 
 }
 SearchPhone.propTypes = {
-    setName: PropTypes.object,
+    setName: PropTypes.any,
 }

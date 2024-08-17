@@ -97,11 +97,11 @@ export default function Phones({ productname, sort, DateSort ,minPrice,  maxPric
     );
 }
 Phones.propTypes = {
-    productname: PropTypes.object,
-    sort: PropTypes.object,
-    sormaxPricet: PropTypes.object,
-    minPrice: PropTypes.object,
-    DateSort: PropTypes.object,
+    productname: PropTypes.any,
+    sort: PropTypes.any,
+    sormaxPricet: PropTypes.any,
+    minPrice: PropTypes.any,
+    DateSort: PropTypes.any,
     maxPrice
-    : PropTypes.object,
+    : PropTypes.any,
 }

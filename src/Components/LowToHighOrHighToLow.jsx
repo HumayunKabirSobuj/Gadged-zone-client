@@ -21,7 +21,7 @@ export default function LowToHighOrHighToLow({ sort, setSort }) {
                     className="select select-accent select-sm text-center w-full"
                 // className='border p-4 rounded-md'
                 >
-                    <option selected disabled>Sort By Price</option>
+                    <option selected>Sort By Price</option>
                     <option value='dsc'>High to Low</option>
                     <option value='asc'>Low to High</option>
                 </select>
@@ -30,7 +30,7 @@ export default function LowToHighOrHighToLow({ sort, setSort }) {
     )
 }
 LowToHighOrHighToLow.propTypes = {
-    sort: PropTypes.object,
-    setSort: PropTypes.object,
+    sort: PropTypes.any,
+    setSort: PropTypes.any,
     
 }

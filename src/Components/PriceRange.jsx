@@ -21,8 +21,8 @@ export default function PriceRange({setMinPrice,minPrice,setMaxPrice,maxPrice}) 
     )
 }
 PriceRange.propTypes = {
-    setMaxPrice: PropTypes.object,
-    setMinPrice: PropTypes.object,
-    maxPrice: PropTypes.object,
-    minPrice: PropTypes.object,
+    setMaxPrice: PropTypes.any,
+    setMinPrice: PropTypes.any,
+    maxPrice: PropTypes.any,
+    minPrice: PropTypes.any,
 }
