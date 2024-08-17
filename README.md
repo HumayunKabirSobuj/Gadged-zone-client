@@ -34,8 +34,6 @@ https://gadgedzonescic10.netlify.app/
 - Tailwind CSS 
 - Daisy UI 
 - Tanstack Query
--  AOS 
-- React-hook-form 
 - Sweet Alert.
 #### Backend:
 
